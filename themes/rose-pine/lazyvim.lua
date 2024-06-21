@@ -1,0 +1,13 @@
+return {
+	-- install rose-pine theme
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+	},
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "rose-pine",
+		},
+	},
+}
