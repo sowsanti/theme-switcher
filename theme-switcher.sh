@@ -119,7 +119,6 @@ reload_configuration() {
 
 			if [ -n "$tmux_conf" ]; then
 				tmux source-file "$tmux_conf"
-				echo "Tmux configuration reloaded from $tmux_conf."
 				# Install and update TPM plugins
 				local tpm_install_script=$(locate_tpm_install)
 				if [ -f "$tpm_install_script" ]; then
