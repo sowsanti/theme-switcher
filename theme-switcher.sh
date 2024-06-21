@@ -76,9 +76,12 @@ apply_theme() {
 		mkdir -p "$(dirname "$current_theme_file")"
 
 		if [ -f "$theme_file" ]; then
-			cp "$theme_file" "$current_theme_file"
-			echo "Copied $theme_file to $current_theme_file"
-			reload_configuration "$program" "$current_theme_file"
+			if cp "$theme_file" "$current_theme_file"; then
+				echo "Copied $theme_file to $current_theme_file"
+				reload_configuration "$program" "$current_theme_file"
+			else
+				echo "Failed to copy $theme_file to $current_theme_file"
+			fi
 		else
 			echo "Theme file for $program not found in $selected_theme"
 		fi
