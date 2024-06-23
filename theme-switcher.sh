@@ -47,7 +47,11 @@ load_config() {
 # Select a theme directory using fzf
 select_theme() {
 	local absolute_path=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-	find "$absolute_path/themes/" -mindepth 1 -maxdepth 1 -type d | fzf
+	local selected_theme=$(find "$absolute_path/themes" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf --height 40% --reverse --prompt="Select a theme > ")
+
+	if [ -n "$selected_theme" ]; then
+		echo "$absolute_path/themes/$selected_theme"
+	fi
 }
 
 # Apply the selected theme to various programs
